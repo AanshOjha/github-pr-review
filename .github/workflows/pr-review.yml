@@ -1,0 +1,60 @@
+name: Automated AI Code Review (Microsoft Foundry)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write      # Required for Azure OIDC / Workload Identity Federation or DefaultAzureCredential
+
+jobs:
+  ai-code-review:
+    name: Microsoft Foundry AI PR Review
+    runs-on: ubuntu-latest
+
+    env:
+      # Microsoft Foundry Endpoint & Deployment settings (from GitHub repository Variables or Defaults)
+      FOUNDRY_ENDPOINT: ${{ vars.FOUNDRY_ENDPOINT || 'https://project-01-us.services.ai.azure.com/openai/v1/responses' }}
+      FOUNDRY_DEPLOYMENT: ${{ vars.FOUNDRY_DEPLOYMENT || 'gpt-4.1' }}
+      
+      # Azure Authentication Credentials for DefaultAzureCredential() (from GitHub repository Secrets)
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      
+      # GitHub Token & Context
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CHANGES_PATH: changes.json
+      REVIEW_RESULTS_PATH: review-results.json
+      PROMPT_PATH: prompts/Generic.codereviewprompt.md
+
+    steps:
+      - name: Checkout Repository with Full Git History
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install azure-identity openai python-dotenv
+
+      - name: Step 1 — Extract and Structure Git Diff (`Get-CodeChanges.ps1`)
+        shell: pwsh
+        run: |
+          ./scripts/Get-CodeChanges.ps1 -SourceBranch "${{ github.event.pull_request.head.ref }}" -TargetBranch "${{ github.event.pull_request.base.ref }}"
+
+      - name: Step 2 — Invoke Microsoft Foundry LLM Review (`Invoke-LLMCodeReview.py`)
+        run: |
+          python ./scripts/Invoke-LLMCodeReview.py
+
+      - name: Step 3 — Post AI Review Comments to Pull Request (`Set-PullRequestComments.py`)
+        run: |
+          python ./scripts/Set-PullRequestComments.py
