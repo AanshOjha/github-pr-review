@@ -85,7 +85,7 @@ Go to your GitHub Repository → **Settings** → **Secrets and variables** → 
 | `AZURE_TENANT_ID` | Copy `tenant` |
 | `AZURE_CLIENT_SECRET` | Copy `password` |
 
-That's it! When these three environment variables are set in `.github/workflows/pr-review.yml`, `DefaultAzureCredential()` automatically picks them up and connects to `https://project-01-us.services.ai.azure.com/openai/v1/responses` using `gpt-4.1`.
+That's it! When these three environment variables are set in `.github/workflows/pr-review.yml`, `DefaultAzureCredential()` automatically picks them up and connects to Azure Foundry using `gpt-4.1`.
 
 ---
 

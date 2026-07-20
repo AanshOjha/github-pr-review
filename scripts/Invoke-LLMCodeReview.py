@@ -76,17 +76,17 @@ def main():
     )
 
     # Azure AI Foundry Endpoint and Model setup
-    endpoint = os.environ.get("FOUNDRY_ENDPOINT", "https://project-01-us.services.ai.azure.com/openai/v1/responses")
+    endpoint = os.environ.get("FOUNDRY_ENDPOINT", os.environ.get("FOUNDRY_ENDPOINT"))
     deployment_name = os.environ.get("FOUNDRY_DEPLOYMENT", "gpt-4.1")
 
     print(f"Endpoint:   {endpoint}")
     print(f"Deployment: {deployment_name}")
-    print("Authenticating via DefaultAzureCredential (https://ai.azure.com/.default)...")
+    print("Authenticating via DefaultAzureCredential...")
 
     try:
         token_provider = get_bearer_token_provider(
             DefaultAzureCredential(),
-            "https://ai.azure.com/.default"
+            os.environ.get("DefaultAzureCredentialURL")
         )
         client = OpenAI(
             base_url=endpoint,
