@@ -1,0 +1,139 @@
+2026-06-09 20:34:18,396 | INFO | Clients initialized successfully
+2026-06-09 20:34:27,805 | INFO | User query: hi
+2026-06-09 20:34:27,806 | INFO | Retrieval query: hi
+2026-06-09 20:34:34,234 | INFO | Embedding generated
+2026-06-09 20:34:37,513 | INFO | Retrieved 3 chunks
+2026-06-09 20:34:37,513 | INFO | Chunks preview: ['<figure>\r\n</figure>', '<figure>\r\n</figure>', '<figure>\r\n</figure>']
+2026-06-09 20:34:37,513 | INFO | Calling LLM
+2026-06-09 20:34:39,375 | INFO | Tokens | prompt=57, completion=16, total=73
+2026-06-09 20:34:39,375 | INFO | Response: Hello! How can I help you today? (Source: conversation context)
+2026-06-09 20:36:19,356 | INFO | User query: what disciplinary actions can be taken for not reporting to office
+2026-06-09 20:36:19,358 | INFO | Retrieval query: what disciplinary actions can be taken for not reporting to office
+2026-06-09 20:36:20,935 | INFO | Embedding generated
+2026-06-09 20:36:21,139 | INFO | Retrieved 3 chunks
+2026-06-09 20:36:21,139 | INFO | Chunks preview: ['3.1. Employees shall be subject to disciplinary action for misconduct including but not limited to disloyalty, any\r\nact of indiscipline, insubordination, indolence, malfeasance or other behavioral iss', '12.1. Where the IC arrives at the conclusion that the allegation against the respondent has been proved, it shall\r\nrecommend to the management / India HR Head to take appropriate action.\r\n\r\n12.2. The ', '<table>\r\n<tr>\r\n<th>S.No.</th>\r\n<th>Nature of Misconduct</th>\r\n<th>Level of Misconduct</th>\r\n</tr>\r\n<tr>\r\n<td>1</td>\r\n<td>Habitual late attendance, habitual leave, absence without leave</td>\r\n<td>LI</t']
+2026-06-09 20:36:21,139 | INFO | Calling LLM
+2026-06-09 20:36:25,748 | INFO | Tokens | prompt=958, completion=256, total=1214
+2026-06-09 20:36:25,748 | INFO | Response: Disciplinary actions for not reporting to office (such as habitual late attendance, habitual leave, absence without leave, overstaying leave without obtaining consent, or going on leave without proper authorization) can include:
+
+- Progressive disciplinary action as listed in section 3.2 and point 4.1 (not shown in your context but referred).
+- Factors influencing the action: history of misconduct, gravity of misconduct, employee response, work history (section 3.3).
+- For specific misconduct such as habitual late attendance, habitual leave, or absence without leave, this is classified as Level I (LI) misconduct (see table).
+- Overstaying leave and going on leave without proper authorization are classified as Level I or Level II (LI/LII) and Level II (LII), respectively.
+
+Potential disciplinary actions (as per section 12.3) include:
+- Up to and including termination of employment.
+- Demotion.
+- Withholding increment or promotion.
+- Legal action as appropriate.
+- Other actions deemed appropriate by service rules.
+
+The HR department, under the directions of the Internal Committee, will conduct and document disciplinary action while maintaining confidentiality (section 12.2).
+
+(Source: Coforge, Employee Misconduct and Disciplinary Policy, Page 8)
+2026-06-09 20:38:44,171 | INFO | Clients initialized successfully
+2026-06-09 20:39:01,241 | INFO | User query: leave policy
+2026-06-09 20:39:01,242 | INFO | Retrieval query: leave policy
+2026-06-09 20:39:07,489 | INFO | Embedding generated
+2026-06-09 20:39:11,643 | INFO | Retrieved 3 chunks
+2026-06-09 20:39:11,643 | INFO | Chunks preview: ["1.1. To objective of this policy is to establish clear guidelines and modalities for 'Notice Period', when an employee\r\nresigns or is terminated from their employment. This policy aims to ensure a smo", 'clause added Salary hold clause basis the LWD on or before and after 15th of the month added Garden Leave Clause added</td>\r\n</tr>\r\n<tr>\r\n<td>22</td>\r\n<td>20</td>\r\n<td>Diva Sharma</td>\r\n<td>Navneet Pr', '<figure>\r\n</figure>\r\n\r\n\r\nLEAVE AND HOLIDAY POLICY- INDIA\r\n\r\n\r\n<figure>\r\n\r\nCoforge\r\n\r\n</figure>\r\n\r\n\r\n<!-- PageBreak -->']
+2026-06-09 20:39:11,644 | INFO | Calling LLM
+2026-06-09 20:39:14,494 | INFO | Tokens | prompt=516, completion=117, total=633
+2026-06-09 20:39:14,495 | INFO | Response: Based on the provided context, there is a mention of a "LEAVE AND HOLIDAY POLICY - INDIA" under the Coforge documentation. However, the excerpt does not contain any specific details or clauses regarding the actual leave policy, types of leaves, holidays, their entitlement, application process, or related rules.
+
+If you need information specifically about the leave and holiday policy (such as leave types, eligibility, approval process, carry forward, etc.), it has not been detailed in the provided text.
+
+Source: Coforge Policy Document (page references and headers as shown in your context)
+2026-06-10 08:47:35,914 | INFO | No environment configuration found.
+2026-06-10 08:47:36,258 | INFO | ManagedIdentityCredential will use IMDS
+2026-06-10 08:47:36,923 | INFO | Successfully initialized OpenAI and Azure Search clients
+2026-06-10 08:48:38,629 | INFO | User query: HI
+2026-06-10 08:48:38,629 | INFO | Search query received: HI
+2026-06-10 08:48:39,696 | INFO | Request URL: 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=REDACTED'
+Request method: 'GET'
+Request headers:
+    'User-Agent': 'azsdk-python-identity/1.25.3 Python/3.14.3 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request
+2026-06-10 08:48:45,750 | INFO | DefaultAzureCredential acquired a token from AzureCliCredential
+2026-06-10 08:48:47,300 | INFO | HTTP Request: POST https://foudry-aj09.openai.azure.com/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-06-10 08:48:48,301 | INFO | Embedding generated successfully
+2026-06-10 08:48:51,465 | INFO | AzureCliCredential.get_token_info succeeded
+2026-06-10 08:48:51,466 | INFO | DefaultAzureCredential acquired a token from AzureCliCredential
+2026-06-10 08:48:51,467 | INFO | Request URL: 'https://live-class-ind-01.search.windows.net/indexes('rag-vector')/docs/search.post.search?api-version=2026-04-01'
+Request method: 'POST'
+Request headers:
+    'Content-Type': 'application/json'
+    'Content-Length': '31000'
+    'Accept': 'application/json;odata.metadata=none'
+    'x-ms-client-request-id': '18af31d5-647b-11f1-abe9-ce9a6ad5f78c'
+    'User-Agent': 'azsdk-python-search-documents/12.0.0 Python/3.14.3 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+2026-06-10 08:48:52,155 | INFO | Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/json; odata.metadata=none; odata.streaming=true; charset=utf-8'
+    'Content-Encoding': 'REDACTED'
+    'Vary': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Preference-Applied': 'REDACTED'
+    'OData-Version': 'REDACTED'
+    'request-id': '18af31d5-647b-11f1-abe9-ce9a6ad5f78c'
+    'elapsed-time': 'REDACTED'
+    'Date': 'Wed, 10 Jun 2026 03:18:51 GMT'
+2026-06-10 08:48:52,156 | INFO | Azure Search returned 3 results
+2026-06-10 08:48:52,156 | INFO | Retrieved chunks: ['Helpdesk</td>\r\n<td>Yeshwanth Rao</td>\r\n<td>Prathima</td>\r\n<td>Vinod Kumar S V</td>\r\n</tr>\r\n<tr>\r\n<td>Admin.helpdesk@coforge.com</td>\r\n<td>Admin.helpdesk@coforge.co m</td>\r\n<td>Prathima.1@coforge.com</td>\r\n<td>Vinod.kumar@coforge.com</td>\r\n</tr>\r\n<tr>\r\n<td>Mobile - 8105426405</td>\r\n<td>Mobile - 97400', '10.0\r\nReferences : Flexi Basket Scheme\r\n\r\n<!-- PageFooter="@ 2025 Coforge" -->\r\n<!-- PageNumber="4" -->\r\n<!-- PageBreak -->', '<td>1-Aug-23</td>\r\n<td>Annual Review</td>\r\n</tr>\r\n<tr>\r\n<td>25</td>\r\n<td>11</td>\r\n<td>Corporate HR</td>\r\n<td>Dipanwita Mukherjee</td>\r\n<td>6-Jan-25</td>\r\n<td>6-Jan-25</td>\r\n<td>Annual Review</td>\r\n</tr>\r\n<tr>\r\n<td>26</td>\r\n<td>11.1</td>\r\n<td>HRSS</td>\r\n<td>Manjari Misra</td>\r\n<td>23-Dec-25</td>\r\n<td']
+2026-06-10 08:48:52,156 | INFO | Calling OpenAI LLM
+2026-06-10 08:48:54,971 | INFO | HTTP Request: POST https://foudry-aj09.openai.azure.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 08:48:54,982 | INFO | LLM Response received | prompt_tokens=1426, completion_tokens=39, total_tokens=1465
+2026-06-10 08:48:54,983 | INFO | Assistant response: Hello! How can I assist you today? If you have any questions related to Coforge helpdesk or any other topic from the document, please let me know.
+
+(Source: Provided context)
+2026-06-10 08:49:57,216 | INFO | User query: if I ask my female collegue for coffee is it harrasment according to company policy ?
+2026-06-10 08:49:57,216 | INFO | Search query received: if I ask my female collegue for coffee is it harrasment according to company policy ?
+2026-06-10 08:49:58,670 | INFO | HTTP Request: POST https://foudry-aj09.openai.azure.com/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-06-10 08:49:58,671 | INFO | Embedding generated successfully
+2026-06-10 08:49:58,676 | INFO | Request URL: 'https://live-class-ind-01.search.windows.net/indexes('rag-vector')/docs/search.post.search?api-version=2026-04-01'
+Request method: 'POST'
+Request headers:
+    'Content-Type': 'application/json'
+    'Content-Length': '31142'
+    'Accept': 'application/json;odata.metadata=none'
+    'x-ms-client-request-id': '42a074a0-647b-11f1-a09d-ce9a6ad5f78c'
+    'User-Agent': 'azsdk-python-search-documents/12.0.0 Python/3.14.3 (Windows-11-10.0.26200-SP0)'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+2026-06-10 08:49:58,798 | INFO | Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/json; odata.metadata=none; odata.streaming=true; charset=utf-8'
+    'Content-Encoding': 'REDACTED'
+    'Vary': 'REDACTED'
+    'Strict-Transport-Security': 'REDACTED'
+    'Preference-Applied': 'REDACTED'
+    'OData-Version': 'REDACTED'
+    'request-id': '42a074a0-647b-11f1-a09d-ce9a6ad5f78c'
+    'elapsed-time': 'REDACTED'
+    'Date': 'Wed, 10 Jun 2026 03:19:57 GMT'
+2026-06-10 08:49:58,799 | INFO | Azure Search returned 3 results
+2026-06-10 08:49:58,799 | INFO | Retrieved chunks: ['6.1. Sexual Harassment shall include unsolicited Verbal, Non-Verbal and Physical gestures, including but not limited\r\nto-\r\n\r\n\r\n<table>\r\n<tr>\r\n<th>Verbal</th>\r\n<th>Non-Verbal</th>\r\n<th>Physical</th>\r\n</tr>\r\n<tr>\r\n<td>Making jokes with sexual overtone</td>\r\n<td>Physical conduct, such as cornering or b', 'shall\r\ninclude but not limited to the following instances:\r\n\r\na. Where submission to or rejection of sexual advances, requests or conduct is made either explicitly or\r\nimplicitly a term or condition of employment or as a basis for employment decisions;\r\n\r\nb. Such advances, requests or conduct (wheth', 'Policy Against Sexual Harassment at\r\nWorkplace\r\n\r\n\r\n<figure>\r\n\r\nCoforge\r\n\r\n</figure>\r\n\r\n\r\n<!-- PageNumber="1" -->\r\n<!-- PageBreak -->']
+2026-06-10 08:49:58,799 | INFO | Calling OpenAI LLM
+2026-06-10 08:50:03,162 | INFO | HTTP Request: POST https://foudry-aj09.openai.azure.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 08:50:03,163 | INFO | LLM Response received | prompt_tokens=947, completion_tokens=246, total_tokens=1193
+2026-06-10 08:50:03,163 | INFO | Assistant response: According to the Coforge Policy Against Sexual Harassment at Workplace, an act is considered sexual harassment if it is unsolicited, unwelcome, and creates an intimidating, hostile, humiliating, or sexually offensive work environment, or if it affects employment decisions or conditions.
+
+Asking a female colleague for coffee, by itself, is not listed as an example of sexual harassment in the policy. The provided examples of harassment involve sexual overtones, sexually explicit jokes or remarks, unwelcome physical contact, and behavior with sexual connotations.
+
+However, if your request for coffee is:
+
+- Repeated after she has declined or shown disinterest, or
+- Accompanied by sexual remarks or innuendo, or
+- Becomes a condition for work-related benefits (quid pro quo), or
+- Makes her uncomfortable and unwelcome, contributing to a hostile environment,
+
+then it could potentially fall under the definition of harassment depending on the totality of circumstances.
+
+If it is a friendly, professional invite without any sexual connotation, pressure, or persistence after a refusal, it would generally not be considered harassment under company policy.
+
+(Source: Policy Against Sexual Harassment at Workplace, Coforge, section 6.1-6.4)
+2026-06-10 08:55:16,256 | INFO | User ended session
