@@ -76,25 +76,33 @@ def main():
     )
 
     # Azure AI Foundry Endpoint and Model setup
-    endpoint = os.environ.get("FOUNDRY_ENDPOINT", os.environ.get("FOUNDRY_ENDPOINT"))
-    deployment_name = os.environ.get("FOUNDRY_DEPLOYMENT", "gpt-4.1")
+    endpoint = os.environ.get("FOUNDRY_ENDPOINT")
+    if not endpoint:
+        print("[ERROR] FOUNDRY_ENDPOINT environment variable/secret is not set.")
+        sys.exit(1)
 
-    print(f"Endpoint:   {endpoint}")
+    deployment_name = os.environ.get("FOUNDRY_DEPLOYMENT", "gpt-4.1")
+    cred_url = os.environ.get("AZURE_CRED_URL") or os.environ.get("DefaultAzureCredentialURL") or "https://ai.azure.com/.default"
+    api_key_env = os.environ.get("API_FOUNDRY_KEY") or os.environ.get("FOUNDRY_API_KEY")
+
+    print("Endpoint:   [HIDDEN / SECURE]")
     print(f"Deployment: {deployment_name}")
-    print("Authenticating via DefaultAzureCredential...")
 
     try:
-        token_provider = get_bearer_token_provider(
-            DefaultAzureCredential(),
-            os.environ.get("DefaultAzureCredentialURL")
-        )
+        if api_key_env:
+            print("Authenticating via Foundry API Key (API_FOUNDRY_KEY)...")
+            api_auth = api_key_env
+        else:
+            print(f"Authenticating via DefaultAzureCredential ({cred_url})...")
+            api_auth = get_bearer_token_provider(DefaultAzureCredential(), cred_url)
+
         client = OpenAI(
             base_url=endpoint,
-            api_key=token_provider
+            api_key=api_auth
         )
     except Exception as auth_err:
-        print(f"[ERROR] Failed to initialize Azure credential: {auth_err}")
-        print("Tip: If testing locally, run `az login`. If running in GitHub Actions, ensure AZURE_CLIENT_ID/TENANT/SECRET are set.")
+        print(f"[ERROR] Failed to initialize Foundry / Azure credential: {auth_err}")
+        print("Tip: Ensure API_FOUNDRY_KEY is set in repository secrets, or `az login` / DefaultAzureCredential is available.")
         sys.exit(1)
 
     print(f"Sending diff ({changes_data.get('totalFilesChanged')} files) to Microsoft Foundry model ({deployment_name})...")

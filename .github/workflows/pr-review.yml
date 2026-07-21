@@ -15,14 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Microsoft Foundry Endpoint & Deployment settings (from GitHub repository Variables or Defaults)
-      FOUNDRY_ENDPOINT: ${{ vars.FOUNDRY_ENDPOINT || 'https://project-01-us.services.ai.azure.com/openai/v1/responses' }}
-      FOUNDRY_DEPLOYMENT: ${{ vars.FOUNDRY_DEPLOYMENT || 'gpt-4.1' }}
-      
-      # Azure Authentication Credentials for DefaultAzureCredential() (from GitHub repository Secrets)
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      # Microsoft Foundry Endpoint, Deployment & Auth settings (directly from GitHub Repository Secrets)
+      FOUNDRY_ENDPOINT: ${{ secrets.FOUNDRY_ENDPOINT }}
+      FOUNDRY_DEPLOYMENT: ${{ vars.FOUNDRY_DEPLOYMENT || secrets.FOUNDRY_DEPLOYMENT || 'gpt-4.1' }}
+      API_FOUNDRY_KEY: ${{ secrets.API_FOUNDRY_KEY }}
+      AZURE_CRED_URL: ${{ secrets.AZURE_CRED_URL || 'https://ai.azure.com/.default' }}
       
       # GitHub Token & Context
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
