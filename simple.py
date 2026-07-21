@@ -14,15 +14,10 @@ load_dotenv()
 
 # --- Configuration ---
 # Set these as environment variables or replace them with your actual keys
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-ENDPOINT = os.environ.get("FOUNDRY_ENDPOINT")
-DEPLOYMENT = os.environ.get("FOUNDRY_DEPLOYMENT")
-AZURE_SEARCH_ENDPOINT = os.environ.get("AZURE_SEARCH_ENDPOINT")
-AZURE_SEARCH_KEY = os.environ.get("AZURE_SEARCH_KEY")
-AZURE_SEARCH_INDEX_NAME = os.environ.get("AZURE_SEARCH_INDEX")
+
 
 # --- Initialize Clients ---
-credential = DefaultAzureCredential()
+credential = DefaultAzureCrial()
 
 token_provider = get_bearer_token_provider(
     credential,
