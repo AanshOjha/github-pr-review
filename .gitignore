@@ -24,3 +24,5 @@ Thumbs.db
 .env*
 *.txt
 pr-review-agent-project-plan.md
+
+personal_notes/
