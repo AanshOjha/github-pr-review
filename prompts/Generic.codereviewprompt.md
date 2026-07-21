@@ -28,12 +28,17 @@ You MUST respond with a valid, machine-readable JSON object matching the exact s
 ```json
 {
   "summary": "A concise 2-sentence summary evaluating the overall health and safety of the Pull Request diff.",
+  "mergeRecommendation": {
+    "verdict": "APPROVE | REQUEST_CHANGES | NEEDS_REEVALUATION",
+    "reason": "One clear sentence explaining the verdict."
+  },
   "reviews": [
     {
       "fileName": "relative/path/to/file.ext",
       "lineNumber": 42,
       "severity": "High | Medium | Low",
-      "comment": "Concise explanation of the bug or risk, followed by a concrete suggested fix."
+      "comment": "Concise explanation of the bug or risk.",
+      "codeSuggestion": "```language\n// exact replacement code for the flagged block\n```"
     }
   ]
 }
@@ -44,4 +49,14 @@ You MUST respond with a valid, machine-readable JSON object matching the exact s
 - `Medium`: Edge-case logic bugs, resource leaks, or missing error handling on non-critical paths.
 - `Low`: Minor maintainability risks or defensive programming suggestions.
 
-If you find zero actionable issues after checking the diff, return an empty `reviews` array (`"reviews": []`) alongside your positive summary.
+### Merge Recommendation Rules:
+- `APPROVE`: No High or Medium severity issues found. The PR is safe to merge.
+- `REQUEST_CHANGES`: One or more High or Medium issues found, but the total lines of code change suggested across all `codeSuggestion` blocks is **≤ 100 lines**. Exact code fixes are provided inline.
+- `NEEDS_REEVALUATION`: The issues found are so pervasive or structural that the total corrective code changes would exceed approximately 100 lines, OR there are fundamental architectural/design flaws that cannot be addressed with targeted line-level fixes. In this case, set verdict to `NEEDS_REEVALUATION` and explain in `reason` what the author should rethink before requesting re-review.
+
+### Code Suggestion Rules:
+- For every finding in `reviews`, you MUST include a `codeSuggestion` field containing the exact corrected replacement code in a fenced code block (with the appropriate language identifier).
+- Keep suggestions minimal and surgical — only replace the specific lines that need changing, not entire functions unless necessary.
+- If no code change is needed (e.g., the issue is purely architectural), set `codeSuggestion` to `null`.
+
+If you find zero actionable issues after checking the diff, return an empty `reviews` array (`"reviews": []`) and set `mergeRecommendation.verdict` to `APPROVE`.
