@@ -47,10 +47,14 @@ jobs:
         shell: pwsh
         run: |
           ./scripts/Get-CodeChanges.ps1 -SourceBranch "${{ github.event.pull_request.head.ref }}" -TargetBranch "${{ github.event.pull_request.base.ref }}"
+          ls -ltra
+          cat changes.json
 
       - name: Step 2 — Invoke Microsoft Foundry LLM Review (`Invoke-LLMCodeReview.py`)
         run: |
           python ./scripts/Invoke-LLMCodeReview.py
+          ls -ltra
+          cat review-results.json
 
       - name: Step 3 — Post AI Review Comments to Pull Request (`Set-PullRequestComments.py`)
         run: |
