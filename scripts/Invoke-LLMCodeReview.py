@@ -5,6 +5,9 @@ Invoke-LLMCodeReview.py
 Reads structured Git changes (changes.json) and system prompt instructions (prompts/Generic.codereviewprompt.md),
 authenticates with Azure AI Foundry / Microsoft Foundry using DefaultAzureCredential, and invokes the chat model (`gpt-4.1`).
 Outputs structured JSON review results to `review-results.json`.
+
+What gets sent: ONLY the unified git diff patch of the modified lines 
+(plus 3 lines of surrounding context).
 """
 
 import os
